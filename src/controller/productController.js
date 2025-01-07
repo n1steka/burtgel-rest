@@ -487,7 +487,9 @@ export class ProductController {
         );
       } else if (id === "add") {
         const code = "865" + new Date().getTime().toString().slice(-9);
-        const barCode = generateEAN13Code(code);
+        const barCode = req.body.bar_code
+          ? req.body.bar_code
+          : generateEAN13Code(code);
         try {
           const productData = {
             ezemshigchiin_ner: req.body.ezemshigchiin_ner,
