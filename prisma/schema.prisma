@@ -3,14 +3,14 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model category {
   id          Int        @id @default(autoincrement())
-  name        String?    
-  slug        String?    
+  name        String?
+  slug        String?
   description String?
   isactive    Boolean?
   parentid    Int?
@@ -22,16 +22,16 @@ model category {
 
 model products {
   id                Int       @id @default(autoincrement())
-  ezemshigchiin_ner String    
+  ezemshigchiin_ner String
   endDate           DateTime?
-  Pc_mark           String    
-  cpu               String    
-  ram               String    
-  hhp               String    
-  mac_addres        String    
-  printer           String    
+  Pc_mark           String
+  cpu               String
+  ram               String
+  hhp               String
+  mac_addres        String
+  printer           String
   description       String?
-  bar_code          String    
+  bar_code          String
   createdat         DateTime  @default(now())
   updatedat         DateTime  @default(now())
   categoryid        Int
@@ -39,24 +39,23 @@ model products {
 }
 
 model services {
-  id                Int       @id @default(autoincrement())
-  ezemshigchiin_ner String    
-  turul             String    
+  id                Int      @id @default(autoincrement())
+  ezemshigchiin_ner String
+  turul             String
   description       String?
-  createdat         DateTime  @default(now())
-  updatedat         DateTime  @default(now())
-  status            Boolean   @default(false)
+  createdat         DateTime @default(now())
+  updatedat         DateTime @default(now())
+  status            Boolean  @default(false)
   categoryid        Int
-  category          category  @relation(fields: [categoryid], references: [id])
+  category          category @relation(fields: [categoryid], references: [id])
 }
-
 
 model user {
   id        Int      @id @default(autoincrement())
-  name      String   
+  name      String
   email     String   @unique
-  password  String   
-  role      String   
+  password  String
+  role      String
   createdat DateTime @default(now())
   updatedat DateTime @default(now())
 }
