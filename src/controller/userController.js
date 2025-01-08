@@ -1,7 +1,6 @@
 import userModel from "../model/userModel.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import jwt from "jsonwebtoken";
-import sendMail from "../utils/sendMail.js";
 import { sendToken } from "../utils/jwt.js";
 import { accessTokenOptions, refreshTokenOptions } from "../utils/jwt.js";
 import dotenv from "dotenv";
