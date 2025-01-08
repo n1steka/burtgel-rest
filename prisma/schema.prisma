@@ -17,6 +17,7 @@ model category {
   createdat   DateTime   @default(now())
   updatedat   DateTime   @default(now())
   products    products[]
+  services    services[]
 }
 
 model products {
@@ -36,6 +37,19 @@ model products {
   categoryid        Int
   category          category  @relation(fields: [categoryid], references: [id])
 }
+
+model services {
+  id                Int       @id @default(autoincrement())
+  ezemshigchiin_ner String    
+  turul             String    
+  description       String?
+  createdat         DateTime  @default(now())
+  updatedat         DateTime  @default(now())
+  status            Boolean   @default(false)
+  categoryid        Int
+  category          category  @relation(fields: [categoryid], references: [id])
+}
+
 
 model user {
   id        Int      @id @default(autoincrement())
